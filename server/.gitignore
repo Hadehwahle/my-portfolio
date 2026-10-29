@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment: holds the Gmail app password, never commit it (keep .env.example)
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Vercel
+.vercel
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

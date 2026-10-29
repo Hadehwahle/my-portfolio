@@ -1,0 +1,179 @@
+/* The work section sits straight under the hero so the first row lands in view */
+.work-section {
+  padding-top: clamp(40px, 4vw, 48px);
+}
+.work-section .section-head {
+  margin-bottom: 32px;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 600px) {
+  .work-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+  }
+}
+
+.work-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-shot {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+.work-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.work-body {
+  padding-top: 18px;
+}
+.work-body h3 {
+  font-size: var(--step-1);
+  letter-spacing: -0.015em;
+}
+.work-title {
+  color: var(--ink);
+  text-decoration: none;
+}
+/* The title link covers the whole card, so the screenshot is clickable too */
+.work-title::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 16px;
+}
+.work-title:focus-visible {
+  outline: none;
+}
+.work-title:focus-visible::after {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.work-kind {
+  margin-top: 2px;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.work-summary {
+  margin-top: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.stack li {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-2);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+.work-url {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--accent);
+}
+.work-url svg {
+  transition: transform 0.2s var(--ease-out);
+}
+
+/* Signature interaction: pointing at one piece of work quiets the rest */
+@media (hover: hover) {
+  .dim-group > li {
+    transition: opacity 0.25s var(--ease-out);
+  }
+  .dim-group:has(> li:hover) > li:not(:hover) {
+    opacity: 0.45;
+  }
+  .work-card:hover .work-shot img {
+    transform: scale(1.025);
+  }
+  .work-card:hover .work-url svg {
+    transform: translate(2px, -2px);
+  }
+}
+
+.unlisted {
+  margin-top: clamp(64px, 8vw, 96px);
+}
+.unlisted-title {
+  font-size: var(--step--1);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--muted);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+.unlisted-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.unlisted-row {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr) minmax(0, 1.5fr);
+  gap: 12px 32px;
+  padding-block: 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.unlisted-row .work-summary {
+  margin-top: 0;
+}
+.unlisted-name h4 {
+  font-size: var(--step-1);
+  letter-spacing: -0.015em;
+}
+.unlisted-name p {
+  margin-top: 2px;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.unlisted-note {
+  justify-self: end;
+  font-size: var(--step--1);
+  color: var(--muted);
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .unlisted-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .unlisted-note {
+    justify-self: start;
+  }
+}

@@ -1,0 +1,171 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+/* Blur only once content scrolls under the bar, so text behind it stays legible */
+.site-header.is-scrolled {
+  border-bottom-color: var(--rule);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  backdrop-filter: saturate(1.4) blur(12px);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 64px;
+}
+.header-row nav {
+  margin-left: auto;
+}
+
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.theme-btn:hover {
+  color: var(--ink);
+  border-color: var(--muted);
+}
+
+.mark {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: var(--step-0);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-list a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: var(--step--1);
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s, background-color 0.15s;
+}
+.nav-list a:not(.btn):hover {
+  color: var(--ink);
+}
+.nav-list a[aria-current='true'] {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
+}
+.nav-cta {
+  margin-left: 12px;
+}
+
+.menu-btn {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 12px;
+  font: 500 var(--step--1) / 1 var(--font);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--rule-strong);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.menu-icon {
+  position: relative;
+  width: 14px;
+  height: 8px;
+  border-block: 1.5px solid currentColor;
+}
+
+@media (max-width: 760px) {
+  .menu-btn {
+    display: inline-flex;
+  }
+  .theme-btn {
+    width: 40px;
+    height: 40px;
+  }
+  /* The panel unrolls from under the bar: a clip reveal with a slight drop,
+     and visibility waits for the close to finish so it stays out of the tab order. */
+  .nav-list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 64px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 8px var(--gutter-r) 20px var(--gutter-l);
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    box-shadow: var(--shadow);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    clip-path: inset(0 0 100% 0);
+    transition:
+      clip-path 0.32s var(--ease-out),
+      transform 0.32s var(--ease-out),
+      opacity 0.2s ease,
+      visibility 0s linear 0.32s;
+  }
+  .nav-list.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 -40px 0);
+    transition:
+      clip-path 0.42s var(--ease-out),
+      transform 0.42s var(--ease-out),
+      opacity 0.2s ease,
+      visibility 0s;
+  }
+  .nav-list li {
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.2s ease, transform 0.3s var(--ease-out);
+  }
+  .nav-list.is-open li {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--n, 0) * 35ms + 60ms);
+  }
+  /* Pull the links out by their own padding so the text lines up with the name */
+  .nav-list a:not(.btn) {
+    min-height: 48px;
+    margin-inline: -12px;
+    font-size: var(--step-0);
+  }
+  .nav-cta {
+    margin: 12px 0 0;
+  }
+  .nav-cta .btn {
+    width: 100%;
+    min-height: 48px;
+    font-size: var(--step-0);
+  }
+}

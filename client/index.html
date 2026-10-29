@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Peter Adeleke · Full-stack engineer</title>
+    <meta name="description" content="Peter Adeleke is a full-stack engineer (React, Node.js) in Nigeria who builds payment systems, dashboards and marketplaces, and teaches frontend development." />
+    <meta property="og:title" content="Peter Adeleke, full-stack engineer" />
+    <meta property="og:description" content="React and Node.js engineer building production web products. Open to remote roles and freelance projects." />
+    <meta name="theme-color" content="#f8f9fb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0c0f" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <!-- Apply a saved theme before first paint so the page doesn't flash the wrong one -->
+    <script>
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
