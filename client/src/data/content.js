@@ -21,8 +21,8 @@ export const PROFILE = {
 };
 
 export const HERO = {
-  headline: "I build web products end to end.",
-  lede: "Payment and enrolment systems, admin dashboards, talent marketplaces and the sites that sell them. I came to software from mechanical engineering, so I read the spec closely, find the gaps early and document what ships.",
+  headline: "Full-stack engineer building production web apps.",
+  lede: "I’ve shipped Paystack payment and instalment flows, a secure online assessment platform, internal HR dashboards and a live talent marketplace. I moved into software from safety-critical engineering in oil and gas, so I read the spec closely, find the gaps early and document what ships.",
   stack: "React, Node.js, Express, MongoDB",
 };
 
